@@ -255,3 +255,12 @@ main .section.highlight {
   margin: 0;
   padding: 40px 0;
 }
+
+
+main .section.grey {
+  background-color: grey;
+  margin: 0;
+  padding: 40px 0;
+}
+
+
