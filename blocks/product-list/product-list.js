@@ -17,38 +17,23 @@ export default async function decorate(block) {
     const data = json.data;
     if (!Array.isArray(data)) throw new Error('Expected data to be an array');
 
-    // Create table
-    const table = document.createElement('table');
-    table.classList.add('product-table');
+    const ul = document.createElement('ul');
+    ul.classList.add('product-list');
 
-    // Create header row
-    const thead = document.createElement('thead');
-    thead.innerHTML = `
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Price</th>
-        <th>Link</th>
-      </tr>
-    `;
-    table.appendChild(thead);
-
-    // Create body rows
-    const tbody = document.createElement('tbody');
     data.forEach((item) => {
-      const row = document.createElement('tr');
-      row.innerHTML = `
-        <td>${item.name}</td>
-        <td>${item.description}</td>
-        <td>$${item.price}</td>
-        <td><a href="${item.path}">View</a></td>
+      const li = document.createElement('li');
+      li.innerHTML = `
+        <a href="${item.path}">
+          <h3>${item.name}</h3>
+          <p>${item.description}</p>
+          <strong>$${item.price}</strong>
+        </a>
       `;
-      tbody.appendChild(row);
+      ul.appendChild(li);
     });
 
-    table.appendChild(tbody);
-    block.innerHTML = ''; // Clear existing content
-    block.appendChild(table);
+    block.innerHTML = '';
+    block.appendChild(ul);
   } catch (err) {
     block.innerHTML = `<p>Error: ${err.message}</p>`;
   }
