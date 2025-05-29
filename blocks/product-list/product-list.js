@@ -14,8 +14,8 @@ export default async function decorate(block) {
     if (!resp.ok) throw new Error(`Failed to load data: ${resp.status}`);
     const json = await resp.json();
 
-    const data = Array.isArray(json) ? json : json.data;
-    if (!Array.isArray(data)) throw new Error('Expected array data');
+    const data = json.data;
+    if (!Array.isArray(data)) throw new Error('Expected data to be an array');
 
     const ul = document.createElement('ul');
     ul.classList.add('product-list');
@@ -26,7 +26,7 @@ export default async function decorate(block) {
         <a href="${item.path}">
           <h3>${item.name}</h3>
           <p>${item.description}</p>
-          <strong>${item.price}</strong>
+          <strong>$${item.price}</strong>
         </a>
       `;
       ul.appendChild(li);
