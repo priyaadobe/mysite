@@ -29,7 +29,7 @@ export default async function decorate(block) {
       ul.appendChild(li);
     });
 
-    block.innerHTML = ''; // Clear table
+    block.innerHTML = '';
     block.appendChild(ul);
   } catch (err) {
     block.innerHTML = `<p>Error: ${err.message}</p>`;
