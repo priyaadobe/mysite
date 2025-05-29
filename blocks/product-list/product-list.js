@@ -10,17 +10,15 @@ export default async function decorate(block) {
   }
 
   try {
-    const response = await fetch(url);
-    if (!response.ok) throw new Error('Fetch failed');
-
-    const data = await response.json();
+    const resp = await fetch(url);
+    if (!resp.ok) throw new Error('Failed to load data');
+    const data = await resp.json();
 
     const ul = document.createElement('ul');
-    ul.className = 'product-list-items';
+    ul.classList.add('product-list');
 
     data.forEach((item) => {
       const li = document.createElement('li');
-      li.className = 'product-item';
       li.innerHTML = `
         <a href="${item.path}">
           <h3>${item.name}</h3>
@@ -31,9 +29,9 @@ export default async function decorate(block) {
       ul.appendChild(li);
     });
 
-    block.textContent = '';
+    block.innerHTML = ''; // Clear table
     block.appendChild(ul);
-  } catch (e) {
-    block.innerHTML = `<p>Error loading product list: ${e.message}</p>`;
+  } catch (err) {
+    block.innerHTML = `<p>Error: ${err.message}</p>`;
   }
 }
