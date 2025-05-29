@@ -11,8 +11,11 @@ export default async function decorate(block) {
 
   try {
     const resp = await fetch(url);
-    if (!resp.ok) throw new Error('Failed to load data');
-    const data = await resp.json();
+    if (!resp.ok) throw new Error(`Failed to load data: ${resp.status}`);
+    const json = await resp.json();
+
+    const data = Array.isArray(json) ? json : json.data;
+    if (!Array.isArray(data)) throw new Error('Expected array data');
 
     const ul = document.createElement('ul');
     ul.classList.add('product-list');
