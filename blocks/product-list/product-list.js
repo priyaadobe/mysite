@@ -1,5 +1,14 @@
 export default async function decorate(block) {
-  const response = await fetch('https://main--mysite--priyaadobe.aem.page/shared-products.json');
+  // Extract config table (first row, first cell)
+  const url = block.querySelector('a')?.href 
+           || block.querySelector('td')?.textContent?.trim();
+
+  if (!url) {
+    block.innerHTML = '<p>No JSON URL provided in block config.</p>';
+    return;
+  }
+
+  const response = await fetch(url);
 
   if (!response.ok) {
     block.innerHTML = '<p>Error loading product list.</p>';
@@ -25,5 +34,6 @@ export default async function decorate(block) {
     ul.appendChild(li);
   });
 
+  block.innerHTML = ''; // Clear config table
   block.appendChild(ul);
 }
