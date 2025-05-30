@@ -8,13 +8,12 @@ indices:
       title:
         select: head > meta[name="title"]
         value: |
-          attribute(el, 'content')
+          match(el, 'by (.*)')
       description:
         select: head > meta[name="description"]
         value: |
-          attribute(el, 'content')
+          match(el, 'by (.*)')
       image:
         select: head > meta[name="image"]
         value: |
-          attribute(el, 'content')
-        
+          match(el, 'by (.*)')
