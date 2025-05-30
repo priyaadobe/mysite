@@ -1,0 +1,20 @@
+indices:
+  mysite:
+    include:
+      - '**'
+    exclude: [] 
+    target: /query-index.json
+    properties:
+      title:
+        select: head > meta[name="title"]
+        value: |
+          match(el, 'content')
+      description:
+        select: head > meta[name="description"]
+        value: |
+          match(el, 'content')
+      image:
+        select: head > meta[name="image"]
+        value: |
+          match(el, 'content')
+        
