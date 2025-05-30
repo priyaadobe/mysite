@@ -5,15 +5,10 @@ indices:
     exclude: [] 
     target: /query-index.json
     properties:
-      title:
-        select: head > meta[name="title"]
+     title:
+        select: head > meta[name="title"], head > meta[property="og:title"]
         value: |
-          match(el, 'by (.*)')
-      description:
-        select: head > meta[name="description"]
-        value: |
-          match(el, 'by (.*)')
-      image:
-        select: head > meta[name="image"]
-        value: |
-          match(el, 'by (.*)')
+          attribute(el, 'content')
+
+
+     
