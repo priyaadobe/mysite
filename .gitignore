@@ -2,7 +2,6 @@
 coverage/*
 logs/*
 node_modules/*
-/pages/day4ass4
 helix-importer-ui
 .DS_Store
 *.bak
