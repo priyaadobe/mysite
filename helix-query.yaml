@@ -3,7 +3,7 @@ indices:
     include:
       - '**'
     exclude: 
-      - '/day4ass4'
+      - []
     target: /query-index.json
     properties:
       title:
