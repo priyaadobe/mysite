@@ -4,7 +4,7 @@ indices:
       - '**'
     exclude: 
       - []
-    target: /query-index1.json
+    target: /query-index.json
     properties:
       title:
         select: head > meta[name="title"], head > meta[property="og:title"]
