@@ -4,5 +4,5 @@ karma.config.js
 LICENSE
 package.json
 package-lock.json
-/pages/day4ass4
+/day4ass4
 test/*
