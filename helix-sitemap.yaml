@@ -1,3 +1,5 @@
+siteUrl: https://main--mysite--priyaadobe.aem.live
+
 sitemaps:
   example:
     source: /query-index.json
